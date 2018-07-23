@@ -16,7 +16,7 @@
   <artifactId>alluxio-underfs-obs</artifactId>
   <name>Alluxio Under File System - Huawei OBS</name>
   <description>Huawei OBS Under File System implementation</description>
-  <version>1.8.0-SNAPSHOT</version>
+  <version>1.8.0</version>
 
   <repositories>
     <repository>
@@ -44,7 +44,7 @@
     </repository>
     <repository>
       <id>huaweicloudsdk</id>
-      <url>https://repo.huaweicloud.com/repository/maven/huaweicloudsdk/</url>
+      <url>https://mirrors.huaweicloud.com/repository/maven/huaweicloudsdk/</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -55,13 +55,13 @@
   </repositories>
 
   <properties>
-    <alluxio.version>1.8.0-SNAPSHOT</alluxio.version>
+    <alluxio.version>1.8.0</alluxio.version>
     <hamcrest.version>1.3</hamcrest.version>
     <java.version>1.8</java.version>
     <junit.version>4.12</junit.version>
     <maven.version>3.3.9</maven.version>
     <mockito.version>1.10.8</mockito.version>
-    <obs.version>2.1.18</obs.version>
+    <obs.version>2.1.23</obs.version>
     <powermock.version>1.6.1</powermock.version>
   </properties>
 
@@ -206,6 +206,7 @@
                     <exclude>META-INF/*.SF</exclude>
                     <exclude>META-INF/*.DSA</exclude>
                     <exclude>META-INF/*.RSA</exclude>
+                    <exclude>org/apache/commons/logging/**</exclude>
                   </excludes>
                 </filter>
               </filters>

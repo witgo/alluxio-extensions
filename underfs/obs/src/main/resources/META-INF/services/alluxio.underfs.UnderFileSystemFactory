@@ -10,3 +10,4 @@
 #
 
 alluxio.underfs.obs.OBSUnderFileSystemFactory
+alluxio.underfs.obs.OBSAUnderFileSystemFactory
