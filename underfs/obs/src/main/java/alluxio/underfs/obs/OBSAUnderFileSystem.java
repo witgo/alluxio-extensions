@@ -82,4 +82,9 @@ public class OBSAUnderFileSystem extends OBSUnderFileSystem {
   protected OutputStream createObject(String key) throws IOException {
     return new OBSAOutputStream(mBucketName, key, mClient);
   }
+
+  @Override
+  protected String getRootKey() {
+    return OBSAUnderFileSystemFactory.HEADER_OBSA + mBucketName;
+  }
 }

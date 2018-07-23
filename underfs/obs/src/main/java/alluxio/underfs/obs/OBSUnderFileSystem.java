@@ -231,7 +231,7 @@ public class OBSUnderFileSystem extends ObjectUnderFileSystem {
   }
 
   @Override
-  protected ObjectStatus getObjectStatus(String key) {
+  protected ObjectStatus getObjectStatus(String key) throws IOException {
     try {
       ObjectMetadata meta = mClient.getObjectMetadata(mBucketName, key);
       if (meta == null) {
@@ -240,8 +240,10 @@ public class OBSUnderFileSystem extends ObjectUnderFileSystem {
       return new ObjectStatus(key, meta.getEtag(), meta.getContentLength(),
           meta.getLastModified().getTime());
     } catch (ObsException e) {
-      LOG.warn("Failed to get Object {}, return null", key, e);
-      return null;
+      if (e.getResponseCode() == 404) { // file not found, possible for exists calls
+        return null;
+      }
+      throw new IOException(e);
     }
   }
 
